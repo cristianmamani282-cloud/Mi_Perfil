@@ -1,0 +1,902 @@
+/* ==========================================================================
+   PALETA DE COLORES: Negro, Morado, Rosado y Rojo
+   ========================================================================== */
+:root {
+  --bg-dark: #09080e;           /* Negro profundo */
+  --bg-card: #13101d;           /* Negro morado */
+  --bg-card-alt: #171324;       /* Variante de fondo */
+  --bg-card-hover: #1f1830;
+
+  --purple-primary: #8b5cf6;    /* Morado vibrante */
+  --purple-dark: #6d28d9;
+  --purple-glow: rgba(139, 92, 246, 0.35);
+
+  --pink-primary: #ec4899;      /* Rosado neón */
+  --pink-light: #f472b6;
+  --pink-glow: rgba(236, 72, 153, 0.35);
+
+  --red-primary: #ef4444;       /* Rojo intenso */
+  --red-dark: #dc2626;
+  --red-glow: rgba(239, 68, 68, 0.35);
+
+  --border-glow: rgba(236, 72, 153, 0.25);
+  --border-purple: rgba(139, 92, 246, 0.25);
+
+  --text-light: #f3f4f6;
+  --text-muted: #a1a1aa;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================================================
+   NAVBAR & MENÚ
+   ========================================================================== */
+.navbar {
+  background-color: rgba(9, 8, 14, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--red-primary), var(--pink-primary), var(--purple-primary)) 1;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, var(--pink-primary), var(--purple-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  color: var(--text-light) !important;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  padding: 6px 12px !important;
+  border-radius: 6px;
+}
+
+.nav-link:hover {
+  color: var(--pink-primary) !important;
+  background-color: rgba(236, 72, 153, 0.08);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* Botón de alternancia de modo (Ejemplo 1 DOM) */
+.btn-theme-toggle {
+  background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--pink-glow);
+  color: #fff;
+}
+
+/* ==========================================================================
+   HERO / CARRUSEL ADAPTATIVO
+   ========================================================================== */
+#heroCarousel {
+  margin-top: 56px;
+}
+
+#heroCarousel .carousel-item {
+  height: 75vh;
+  min-height: 480px;
+  max-height: 720px;
+  position: relative;
+  overflow: hidden;
+  background-color: #06050a;
+}
+
+.carousel-backdrop {
+  position: absolute;
+  inset: -30px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(28px) brightness(0.24);
+  transform: scale(1.15);
+  z-index: 1;
+}
+
+.carousel-stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.carousel-photo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(139, 92, 246, 0.25);
+  display: block;
+}
+
+/* ==========================================================================
+   SECCIONES Y TÍTULOS
+   ========================================================================== */
+section {
+  padding: 85px 0;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--red-primary), var(--pink-primary), var(--purple-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red-primary), var(--pink-primary), var(--purple-primary));
+  border-radius: 3px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.section-lead {
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   TARJETAS CON IMÁGENES DE FONDO (PASATIEMPOS E INTERESES)
+   Siempre con texto blanco y legible en ambos modos (Oscuro y Claro)
+   ========================================================================== */
+#interests {
+  background-color: var(--bg-card-alt);
+}
+
+.card-with-bg {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  border-radius: 14px;
+  border: 1px solid var(--border-glow);
+  height: 100%;
+  min-height: 270px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-with-bg:hover {
+  transform: translateY(-5px);
+  border-color: var(--pink-primary);
+  box-shadow: 0 12px 32px var(--pink-glow), 0 0 20px var(--purple-glow);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 8, 14, 0.85) 0%, rgba(19, 16, 29, 0.95) 100%) !important;
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.card-with-bg:hover .card-overlay {
+  background: linear-gradient(180deg, rgba(16, 10, 26, 0.74) 0%, rgba(13, 8, 20, 0.88) 100%) !important;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 26px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content .card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  color: var(--pink-primary) !important;
+}
+
+/* Letras de pasatiempos e intereses SIEMPRE blancas y nítidas sobre el fondo oscuro */
+.card-content h5 {
+  font-weight: 700;
+  color: #ffffff !important;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.card-content p {
+  color: #f1f5f9 !important;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Fondos temáticos */
+.hobby-bg-1 { background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=700&auto=format&fit=crop&q=80'); }
+.hobby-bg-2 { background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=700&auto=format&fit=crop&q=80'); }
+.hobby-bg-3 { background-image: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=700&auto=format&fit=crop&q=80'); }
+.hobby-bg-4 { background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&auto=format&fit=crop&q=80'); }
+
+.interest-bg-1 { background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&auto=format&fit=crop&q=80'); }
+.interest-bg-2 { background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=700&auto=format&fit=crop&q=80'); }
+.interest-bg-3 { background-image: url('https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=700&auto=format&fit=crop&q=80'); }
+.interest-bg-4 { background-image: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=700&auto=format&fit=crop&q=80'); }
+
+/* ==========================================================================
+   TABLAS (HORARIO Y JUEGOS)
+   ========================================================================== */
+.schedule-table-wrap,
+.games-table-wrap {
+  background-color: var(--bg-card);
+  border-radius: 14px;
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.schedule-table {
+  --bs-table-bg: transparent !important;
+  --bs-table-accent-bg: transparent !important;
+  --bs-table-striped-bg: transparent !important;
+  --bs-table-active-bg: transparent !important;
+  --bs-table-hover-bg: rgba(139, 92, 246, 0.08) !important;
+  --bs-table-color: var(--text-light) !important;
+  --bs-table-border-color: rgba(236, 72, 153, 0.18) !important;
+  background-color: transparent !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  color: var(--text-light) !important;
+}
+
+.schedule-table thead {
+  background: linear-gradient(90deg, #6d28d9, #be185d) !important;
+}
+
+.schedule-table th {
+  background: transparent !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 18px 20px !important;
+  border: none !important;
+  border-bottom: 2px solid rgba(236, 72, 153, 0.3) !important;
+  box-shadow: none !important;
+}
+
+.schedule-table td {
+  background-color: transparent !important;
+  color: var(--text-light) !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(236, 72, 153, 0.15) !important;
+  padding: 18px 20px !important;
+  box-shadow: none !important;
+  vertical-align: middle !important;
+  font-size: 0.94rem !important;
+  line-height: 1.55 !important;
+}
+
+.schedule-table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+.schedule-table tbody tr:hover {
+  background-color: rgba(236, 72, 153, 0.07) !important;
+}
+
+.schedule-hour-col {
+  background-color: rgba(139, 92, 246, 0.09) !important;
+  border-right: 1px solid rgba(236, 72, 153, 0.2) !important;
+  white-space: nowrap;
+  width: 220px;
+}
+
+.schedule-hour-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3));
+  border: 1px solid rgba(236, 72, 153, 0.4);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   TABLA DE JUEGOS Y FILTRADO (3 COLUMNAS Y FUNCIONAMIENTO DE FILTRO)
+   ========================================================================== */
+#games {
+  background-color: var(--bg-card-alt);
+}
+
+.games-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.btn-filter {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  color: var(--text-light);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-filter:hover,
+.btn-filter.active {
+  background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px var(--pink-glow);
+}
+
+.games-table {
+  width: 100% !important;
+  display: table !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  margin: 0 !important;
+  background-color: var(--bg-card);
+}
+
+.games-table thead {
+  display: table-header-group !important;
+  background: linear-gradient(90deg, #be185d, #6d28d9) !important;
+}
+
+.games-table tbody {
+  display: table-row-group !important;
+}
+
+/* Las filas se muestran como table-row, pero se ocultan al filtrar sin conflicto de !important */
+.games-table tr.game-row {
+  display: table-row;
+  background-color: var(--bg-card);
+  transition: background-color 0.25s ease;
+}
+
+.games-table tr.game-row.d-none {
+  display: none !important;
+}
+
+.games-table tbody tr.game-row:hover {
+  background-color: rgba(139, 92, 246, 0.08) !important;
+}
+
+.games-table th {
+  display: table-cell !important;
+  background: transparent !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 16px 20px !important;
+  border: none !important;
+  border-bottom: 2px solid rgba(236, 72, 153, 0.3) !important;
+}
+
+.games-table td {
+  display: table-cell !important;
+  background-color: var(--bg-card);
+  color: var(--text-light);
+  border: none !important;
+  border-bottom: 1px solid rgba(236, 72, 153, 0.15) !important;
+  padding: 18px 20px !important;
+  vertical-align: middle !important;
+}
+
+.games-table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+.game-portada-box {
+  width: 110px;
+  height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--border-glow);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  background-color: #0d0a14;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.games-table tbody tr:hover .game-portada-box {
+  transform: scale(1.06);
+  border-color: var(--pink-primary);
+  box-shadow: 0 8px 24px var(--pink-glow);
+}
+
+.game-portada-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.game-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.game-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.game-tag {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+  color: #fff;
+}
+
+.game-experience-cell {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   MÚSICA FAVORITA Y PLAYLISTS
+   ========================================================================== */
+.music-embed-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--text-light);
+}
+
+.music-embed-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--pink-primary);
+  box-shadow: 0 10px 30px var(--pink-glow), 0 0 18px var(--red-glow);
+  color: var(--text-light);
+}
+
+.music-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.music-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.music-embed-card:hover .music-thumb-wrap img {
+  transform: scale(1.06);
+}
+
+.music-thumb-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(9, 8, 14, 0.45);
+  transition: background 0.25s ease;
+}
+
+.music-embed-card:hover .music-thumb-play {
+  background: rgba(236, 72, 153, 0.25);
+}
+
+.music-thumb-play i {
+  font-size: 3.2rem;
+  color: #fff;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8));
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.music-embed-card:hover .music-thumb-play i {
+  transform: scale(1.15);
+  color: var(--pink-light);
+}
+
+.music-embed-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-top: 1px solid rgba(236, 72, 153, 0.15);
+  background-color: var(--bg-card);
+  flex-grow: 1;
+}
+
+.music-embed-label i {
+  font-size: 1.8rem;
+  color: var(--red-primary);
+  flex-shrink: 0;
+}
+
+.music-embed-label strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-light);
+  line-height: 1.35;
+}
+
+.playlist-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--red-primary), var(--pink-primary));
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   FRASES (SOLO IMÁGENES)
+   ========================================================================== */
+.quote-pure-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  overflow: hidden;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.quote-pure-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--pink-primary);
+  box-shadow: 0 14px 35px var(--pink-glow), 0 0 20px var(--purple-glow);
+}
+
+.quote-pure-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.quote-pure-card:hover .quote-pure-img {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   FORMULARIO DE CONTACTO AVANZADO
+   ========================================================================== */
+#contact {
+  background-color: var(--bg-card-alt);
+}
+
+.contact-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 18px;
+  padding: 40px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+.custom-input {
+  background-color: rgba(9, 8, 14, 0.7);
+  border: 1px solid var(--border-glow);
+  color: var(--text-light);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.custom-input:focus {
+  background-color: rgba(19, 16, 29, 0.9);
+  border-color: var(--pink-primary);
+  color: #fff;
+  box-shadow: 0 0 15px var(--pink-glow);
+}
+
+.custom-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.custom-select-country {
+  background-color: rgba(19, 16, 29, 0.95) !important;
+  border: 1px solid var(--border-glow) !important;
+  color: var(--text-light) !important;
+  border-radius: 10px 0 0 10px !important;
+  font-size: 0.92rem;
+  max-width: 170px;
+}
+
+.custom-select-country:focus {
+  border-color: var(--pink-primary) !important;
+  box-shadow: 0 0 15px var(--pink-glow) !important;
+  color: #fff !important;
+}
+
+.input-group .custom-input#telefono {
+  border-radius: 0 10px 10px 0 !important;
+}
+
+.msg-field-error {
+  color: #ef4444;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 6px;
+  min-height: 20px;
+}
+
+.is-invalid-custom {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.45) !important;
+}
+
+.btn-submit-custom {
+  background: linear-gradient(135deg, var(--red-primary), var(--pink-primary), var(--purple-primary));
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 34px;
+  font-size: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 18px var(--pink-glow);
+}
+
+.btn-submit-custom:hover {
+  transform: translateY(-3px);
+  color: #fff;
+  box-shadow: 0 8px 25px var(--pink-glow);
+}
+
+.msg-error {
+  color: #ef4444;
+  font-weight: 700;
+  margin-top: 14px;
+  font-size: 0.95rem;
+}
+
+.msg-exito {
+  color: #22c55e;
+  font-weight: 700;
+  margin-top: 14px;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   FOOTER Y REDES SOCIALES
+   ========================================================================== */
+footer#social-footer {
+  background-color: var(--bg-dark);
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--red-primary), var(--pink-primary), var(--purple-primary)) 1;
+  padding: 50px 0 35px;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.social-btn:hover {
+  transform: translateY(-4px);
+  color: #fff;
+}
+
+.social-btn.facebook { background: #1877f2; box-shadow: 0 4px 15px rgba(24, 119, 242, 0.35); }
+.social-btn.tiktok { background: #010101; border-color: rgba(236, 72, 153, 0.4); box-shadow: 0 4px 15px var(--pink-glow); }
+.social-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4); }
+.social-btn.github { background: #181524; border-color: rgba(139, 92, 246, 0.4); box-shadow: 0 4px 15px var(--purple-glow); }
+
+.footer-title {
+  background: linear-gradient(135deg, var(--red-primary), var(--pink-primary), var(--purple-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.footer-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.footer-copy {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   MODO CLARO (LIGHT MODE) - AJUSTES PARA PERFECTA LEGIBILIDAD
+   ========================================================================== */
+body.light-mode {
+  --bg-dark: #f5f5f9;
+  --bg-card: #ffffff;
+  --bg-card-alt: #eaeaf2;
+  --text-light: #181824;
+  --text-muted: #525266;
+  --border-glow: rgba(139, 92, 246, 0.25);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+body.light-mode .navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+body.light-mode .nav-link {
+  color: #181824 !important;
+}
+
+body.light-mode .nav-link:hover {
+  color: var(--pink-primary) !important;
+}
+
+body.light-mode .navbar-toggler-icon {
+  filter: invert(0);
+}
+
+/* En Modo Claro, los cuadros de pasatiempos e intereses mantienen sus letras blancas y legibles */
+body.light-mode .card-with-bg .card-content h5 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+body.light-mode .card-with-bg .card-content p {
+  color: #f8fafc !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+body.light-mode .card-overlay {
+  background: linear-gradient(180deg, rgba(9, 8, 14, 0.85) 0%, rgba(19, 16, 29, 0.95) 100%) !important;
+}
+
+body.light-mode .section-lead {
+  color: #475569 !important;
+}
+
+body.light-mode .custom-input,
+body.light-mode .custom-select-country {
+  background-color: #ffffff !important;
+  color: #181824 !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode .custom-input:focus,
+body.light-mode .custom-select-country:focus {
+  background-color: #ffffff !important;
+  color: #181824 !important;
+}
+
+body.light-mode .schedule-table td {
+  background-color: #ffffff !important;
+  color: #181824 !important;
+}
+
+body.light-mode .schedule-hour-col {
+  background-color: #f1f5f9 !important;
+}
+
+body.light-mode .games-table,
+body.light-mode .games-table tr.game-row,
+body.light-mode .games-table td {
+  background-color: #ffffff !important;
+  color: #181824 !important;
+}
+
+body.light-mode .game-title {
+  color: #181824 !important;
+}
+
+body.light-mode .game-experience-cell {
+  color: #1e293b !important;
+}
+
+body.light-mode .quote-pure-card {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode .btn-filter {
+  background-color: #ffffff;
+  color: #181824;
+  border-color: #cbd5e1;
+}
+
+body.light-mode .btn-filter.active {
+  color: #ffffff;
+}
