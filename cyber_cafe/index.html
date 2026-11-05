@@ -3,48 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Game Zone</title>
+    <title>Cyber Café Gamer</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 
+    <!-- jQuery requerido por la práctica -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 
     <div class="contenedor">
 
-        <h1 id="titulo">🎮 Cyber Game Zone</h1>
+        <h1>🎮 Cyber Café Gamer</h1>
 
-        <div class="card-btn" data-tema="pc">
-            💻 Computadoras Libres (5)
+        <!-- Temporizador -->
+        <div class="timer-box">
+
+            <h2 id="tiempo">00:00:00</h2>
+
+            <h3 id="costo">
+                Bs. 0.00
+            </h3>
+
+            <button id="iniciar">
+                ▶ Iniciar
+            </button>
+
+            <button id="pausar">
+                ⏸ Pausar
+            </button>
+
+            <button id="reiniciar">
+                🔄 Reiniciar
+            </button>
+
         </div>
 
-        <div class="card-info">
-            <p>5 computadoras disponibles para juegos y navegación.</p>
+        <!-- Contadores -->
+        <div class="contadores">
+
+            <div class="contador">
+                <span>💻</span>
+                <h2>5</h2>
+                <p>PC Libres</p>
+            </div>
+
+            <div class="contador">
+                <span>🎮</span>
+                <h2>5</h2>
+                <p>PlayStation</p>
+            </div>
+
+            <div class="contador">
+                <span>🕹️</span>
+                <h2>3</h2>
+                <p>Xbox</p>
+            </div>
+
         </div>
 
-        <div class="card-btn" data-tema="ps">
-            🎮 PlayStation Libres (5)
+        <!-- Filtros -->
+        <div class="filtros">
+
+            <button class="filtro" data-filter="all">
+                Todo
+            </button>
+
+            <button class="filtro" data-filter="pc">
+                PC
+            </button>
+
+            <button class="filtro" data-filter="ps">
+                Play
+            </button>
+
+            <button class="filtro" data-filter="xbox">
+                Xbox
+            </button>
+
         </div>
 
-        <div class="card-info">
-            <p>5 consolas PlayStation listas para jugar.</p>
+        <!-- PC -->
+        <div class="servicio categoria pc">
+
+            <div class="card-btn" data-tema="pc">
+                💻 Computadoras Libres (5)
+            </div>
+
+            <div class="card-info">
+
+                <p>
+                    Equipos disponibles para juegos, internet y trabajos académicos.
+                </p>
+
+                <!-- Cambia el link cuando quieras -->
+                <img
+                    src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=1000"
+                    class="imagen-servicio"
+                    alt="PC Gamer">
+
+            </div>
+
         </div>
 
-        <div class="card-btn" data-tema="xbox">
-            🕹️ Xbox Libres (3)
+        <!-- PLAY -->
+        <div class="servicio categoria ps">
+
+            <div class="card-btn" data-tema="ps">
+                🎮 PlayStation Libres (5)
+            </div>
+
+            <div class="card-info">
+
+                <p>
+                    Consolas PlayStation disponibles con pantalla y mandos.
+                </p>
+
+                <img
+                    src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=1000"
+                    class="imagen-servicio"
+                    alt="PlayStation">
+
+            </div>
+
         </div>
 
-        <div class="card-info">
-            <p>3 consolas Xbox disponibles.</p>
-        </div>
+        <!-- XBOX -->
+        <div class="servicio categoria xbox">
 
-        <div class="card-btn" data-tema="cafe">
-            ☕ Zona Libre de Mesas
-        </div>
+            <div class="card-btn" data-tema="xbox">
+                🕹️ Xbox Libres (3)
+            </div>
 
-        <div class="card-info">
-            <p>Espacio para descansar, estudiar o consumir alimentos.</p>
+            <div class="card-info">
+
+                <p>
+                    Consolas Xbox listas para jugar.
+                </p>
+
+                <img
+                    src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=1000"
+                    class="imagen-servicio"
+                    alt="Xbox">
+
+            </div>
+
         </div>
 
     </div>
