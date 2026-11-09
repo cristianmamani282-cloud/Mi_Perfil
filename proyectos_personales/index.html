@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESSENZA | Perfumería</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= TOP BAR ================= -->
+
+    <div class="top-bar">
+
+        <div class="top-item">
+            <i class="fa-solid fa-truck"></i>
+            Envíos a toda Bolivia
+        </div>
+
+        <div class="top-item">
+            Fragancias que inspiran tu mejor versión
+        </div>
+
+        <div class="top-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            Productos 100% originales
+        </div>
+
+    </div>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    <i class="fa-brands fa-pagelines"></i>
+                </div>
+
+                <div class="logo-text">
+                    <h1>ESSENZA</h1>
+                    <span>PERFUMERÍA</span>
+                </div>
+
+            </div>
+
+            <button id="hamburger" class="hamburger" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul id="menu" class="menu">
+
+                <li>
+                    <a href="#" class="active">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Mujer
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Hombre
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Más Vendidos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Catálogos
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="nav-icons">
+
+                <button id="modoBtn" class="icon-btn" aria-label="Cambiar modo" title="Modo Noche">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button id="abrirModal" class="account-btn" aria-label="Mi Cuenta">
+
+                    <i class="fa-regular fa-user"></i>
+
+                    <span>
+                        Mi Cuenta
+                    </span>
+
+                </button>
+
+                <button class="icon-btn cart-btn" aria-label="Carrito de compras">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    <span class="cart-count">
+                        0
+                    </span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <button class="slider-btn prev">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <span class="subtitle">
+                    NUEVA COLECCIÓN
+                </span>
+
+                <h2>
+                    Fragancias
+                    <br>
+                    que dejan huella
+                </h2>
+
+                <p>
+                    Más que un perfume, una historia tuya.
+                </p>
+
+                <button class="hero-button">
+
+                    Descubrir ahora
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+            <div class="hero-image">
+
+                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80"
+                    alt="Perfume principal">
+
+            </div>
+
+            <div class="hero-side-text">
+
+                BELLEZA
+                <br>
+                QUE
+                <br>
+                ACOMPAÑA
+                <br>
+                TU ESENCIA
+
+            </div>
+
+        </div>
+
+        <button class="slider-btn next">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="slider-dots">
+
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+
+        </div>
+
+    </section>
+
+    <!-- ================= CATEGORIAS ================= -->
+
+    <section class="categories">
+
+        <article class="category-card women-card">
+
+            <div class="card-content">
+
+                <h3>
+                    Para
+                    <br>
+                    Mujer
+                </h3>
+
+                <p>
+                    Descubre fragancias
+                    que resaltan tu esencia.
+                </p>
+
+                <button>
+                    Ver catálogo
+                </button>
+
+            </div>
+
+        </article>
+
+        <article class="category-card men-card">
+
+            <div class="card-content">
+
+                <h3>
+                    Para
+                    <br>
+                    Hombre
+                </h3>
+
+                <p>
+                    Fragancias que
+                    hablan por ti.
+                </p>
+
+                <button>
+                    Ver catálogo
+                </button>
+
+            </div>
+
+        </article>
+
+        <article class="category-card top-card">
+
+            <span class="top-badge">
+                TOP
+            </span>
+
+            <div class="card-content">
+
+                <h3>
+                    Más
+                    <br>
+                    Vendidos
+                </h3>
+
+                <p>
+                    Las fragancias favoritas
+                    de nuestros clientes.
+                </p>
+
+                <button>
+                    Ver ahora
+                </button>
+
+            </div>
+
+        </article>
+
+    </section>
+
+    <!-- ================= BENEFICIOS ================= -->
+
+    <section class="benefits">
+
+        <div class="benefit">
+
+            <i class="fa-solid fa-truck-fast"></i>
+
+            <div>
+
+                <h4>
+                    Envíos a toda Bolivia
+                </h4>
+
+                <p>
+                    Rápido y seguro
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="benefit">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+
+                <h4>
+                    Productos originales
+                </h4>
+
+                <p>
+                    Garantía de autenticidad
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="benefit">
+
+            <i class="fa-solid fa-credit-card"></i>
+
+            <div>
+
+                <h4>
+                    Pago seguro
+                </h4>
+
+                <p>
+                    Múltiples métodos
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="benefit">
+
+            <i class="fa-solid fa-gift"></i>
+
+            <div>
+
+                <h4>
+                    Promociones exclusivas
+                </h4>
+
+                <p>
+                    Cada semana
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= MARCAS ================= -->
+
+    <section class="brands">
+
+        <div class="section-title">
+
+            <h2>
+                Marcas que inspiran
+            </h2>
+
+            <a href="#">
+                Ver todas
+            </a>
+
+        </div>
+
+        <div class="brand-list">
+
+            <button class="brand-arrow">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="brand">
+                DIOR
+            </div>
+
+            <div class="brand">
+                CHANEL
+            </div>
+
+            <div class="brand">
+                VERSACE
+            </div>
+
+            <div class="brand">
+                ARMANI
+            </div>
+
+            <div class="brand">
+                PACO RABANNE
+            </div>
+
+            <div class="brand">
+                YSL
+            </div>
+
+            <div class="brand">
+                CH
+            </div>
+
+            <button class="brand-arrow">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= REDES ================= -->
+
+    <section class="social">
+
+        <div class="social-info">
+
+            <h2>
+                Síguenos en redes sociales
+            </h2>
+
+            <p>
+                Sé parte de nuestra comunidad y entérate
+                de novedades, promociones y lanzamientos.
+            </p>
+
+        </div>
+
+        <div class="social-links">
+
+            <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+                Instagram
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-tiktok"></i>
+                TikTok
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-facebook"></i>
+                Facebook
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-whatsapp"></i>
+                WhatsApp
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <div class="footer-logo">
+
+                    <i class="fa-brands fa-pagelines"></i>
+
+                    <h2>
+                        ESSENZA
+                    </h2>
+
+                </div>
+
+                <p>
+                    Fragancias que inspiran
+                    tu mejor versión.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Enlaces
+                </h3>
+
+                <a href="#">Inicio</a>
+                <a href="#">Mujer</a>
+                <a href="#">Hombre</a>
+                <a href="#">Más Vendidos</a>
+                <a href="#">Catálogos</a>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Información
+                </h3>
+
+                <a href="#">Acerca de nosotros</a>
+                <a href="#">Envíos</a>
+                <a href="#">Políticas</a>
+                <a href="#">Términos</a>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Contacto
+                </h3>
+
+                <p>
+                    info@essenza.com
+                </p>
+
+                <p>
+                    +591 71234567
+                </p>
+
+                <p>
+                    La Paz, Bolivia
+                </p>
+
+            </div>
+
+            <div class="footer-message">
+
+                UN MUNDO
+                <br>
+                DE FRAGANCIAS
+                <br>
+                TE ESPERA
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- ================= MODAL ================= -->
+
+    <div id="modal" class="modal">
+
+        <div class="modal-content">
+
+            <button class="close-modal" aria-label="Cerrar modal">
+                &times;
+            </button>
+
+            <div class="modal-header">
+
+                <i class="fa-brands fa-pagelines"></i>
+
+                <h2>
+                    Crear tu cuenta
+                </h2>
+
+                <p>
+                    Únete a nuestra comunidad y vive la experiencia Essenza.
+                </p>
+
+            </div>
+
+            <form id="registroForm">
+
+                <input type="text" id="nombre" placeholder="Nombre (solo letras)" autocomplete="given-name">
+
+                <input type="text" id="apellido" placeholder="Apellido (solo letras)" autocomplete="family-name">
+
+                <input type="text" id="ci" placeholder="CI (solo números)" inputmode="numeric" maxlength="10">
+
+                <select id="ciudad">
+
+                    <option value="">
+                        Seleccione Ciudad
+                    </option>
+
+                    <option>La Paz</option>
+                    <option>Cochabamba</option>
+                    <option>Santa Cruz</option>
+                    <option>Oruro</option>
+                    <option>Potosí</option>
+                    <option>Tarija</option>
+                    <option>Chuquisaca</option>
+                    <option>Beni</option>
+                    <option>Pando</option>
+
+                </select>
+
+                <input type="tel" id="telefono" placeholder="Teléfono (solo números, 8 dígitos)" inputmode="numeric" maxlength="8">
+
+                <input type="email" id="correo" placeholder="Correo electrónico">
+
+                <input type="password" id="password" placeholder="Contraseña (mín. 8 caract., 1 mayúscula, 1 número)">
+
+                <input type="password" id="confirmar" placeholder="Confirmar contraseña">
+
+                <label class="terms">
+
+                    <input type="checkbox" id="terminos">
+
+                    Acepto los términos y condiciones
+
+                </label>
+
+                <button type="submit" class="register-btn">
+
+                    Crear cuenta
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="scrip.js"></script>
+
+</body>
+
+</html>
