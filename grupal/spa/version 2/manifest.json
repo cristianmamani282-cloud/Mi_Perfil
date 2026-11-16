@@ -1,0 +1,65 @@
+{
+  "id": "asio-spa-asiatico-pwa-v2",
+  "name": "ASIO - Spa Asiático & Bienestar",
+  "short_name": "ASIO Spa",
+  "description": "Rituales asiáticos para un equilibrio real. Reserva masajes relajantes, faciales y experiencias zen.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FBF8F5",
+  "theme_color": "#5A4978",
+  "lang": "es-ES",
+  "dir": "ltr",
+  "categories": [
+    "lifestyle",
+    "health",
+    "beauty"
+  ],
+  "icons": [
+    {
+      "src": "./icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Reservar Cita",
+      "short_name": "Reservar",
+      "description": "Reserva tu momento de desconexión y paz interior",
+      "url": "./index.html",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
