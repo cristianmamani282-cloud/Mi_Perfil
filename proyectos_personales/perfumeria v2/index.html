@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#b8904d">
+    <meta name="description" content="ESSENZA Haute Parfumerie - Catálogo exclusivo de fragancias y perfumes originales. PWA de lujo con navegación minimalista.">
+
+    <title>ESSENZA | Haute Parfumerie</title>
+
+    <!-- ================= PWA & APPLE META TAGS ================= -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ESSENZA">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="icons/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
+    <!-- ================= FUENTES DE ALTA PERFUMERÍA ================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ================= ESTILOS Y FUENTES ================= -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- jQuery para Delegación de Eventos (.off().on()) y Sanitización DOM (.text()) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body class="app-locked">
+
+    <!-- ================= TOP BAR DE LUJO ================= -->
+    <aside class="top-bar" aria-label="Información de la boutique">
+        <div class="top-item truncate-text">
+            <i class="fa-solid fa-truck" aria-hidden="true"></i>
+            <span>Envíos Asegurados a Toda Bolivia</span>
+        </div>
+        <div class="top-item truncate-text">
+            <span>HAUTE PARFUMERIE • 100% ORIGINAL</span>
+        </div>
+        <div class="top-item truncate-text">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <span>Garantía Oficial de Autenticidad</span>
+        </div>
+    </aside>
+
+    <!-- ================= SITE HEADER & NAVEGACIÓN POR BOTONES ================= -->
+    <header class="site-header">
+        <nav class="navbar" aria-label="Navegación principal">
+            <div class="logo" role="button" tabindex="0" data-view="inicio" aria-label="Volver a Inicio">
+                <div class="logo-icon">
+                    <i class="fa-brands fa-pagelines" aria-hidden="true"></i>
+                </div>
+                <div class="logo-text">
+                    <h1 class="truncate-text">ESSENZA</h1>
+                    <span class="truncate-text">HAUTE PARFUMERIE</span>
+                </div>
+            </div>
+
+            <!-- Botones de Despliegue en Escritorio (Estilo Minimalista de Alta Perfumería) -->
+            <div class="nav-links-bar" role="tablist">
+                <button class="nav-link-btn active" data-view="inicio" role="tab" aria-selected="true">
+                    <span>Inicio</span>
+                </button>
+                <button class="nav-link-btn" data-view="catalogo" role="tab" aria-selected="false">
+                    <span>Catálogo</span>
+                </button>
+                <button class="nav-link-btn" data-view="colecciones" role="tab" aria-selected="false">
+                    <span>Colecciones</span>
+                </button>
+                <button class="nav-link-btn" data-view="garantia" role="tab" aria-selected="false">
+                    <span>Garantía</span>
+                </button>
+                <button class="nav-link-btn" data-view="contacto" role="tab" aria-selected="false">
+                    <span>Contacto</span>
+                </button>
+            </div>
+
+            <!-- Acciones Rápidas (Touch Targets >= 44px) -->
+            <div class="nav-icons">
+                <button id="modoBtn" class="icon-btn" aria-label="Cambiar tema de luz" title="Modo Claro/Noche">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
+
+                <button id="abrirModal" class="account-btn" aria-label="Mi Cuenta">
+                    <i class="fa-regular fa-user" aria-hidden="true"></i>
+                    <span id="userNameNav" class="truncate-text">Mi Cuenta</span>
+                </button>
+
+                <button id="cartBtn" class="icon-btn cart-btn" data-view="catalogo" aria-label="Ver carrito">
+                    <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                    <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= CONTENEDOR DE VISTAS (SIN SCROLL GLOBAL 100dvh) ================= -->
+    <main class="app-viewport" id="appViewport">
+
+        <!-- ================= VISTA 1: INICIO ================= -->
+        <section id="view-inicio" class="app-view active" aria-label="Página de inicio">
+            <div class="hero">
+                <button class="slider-btn prev" aria-label="Diapositiva anterior">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge-wrap">
+                            <span class="luxury-badge">ÉDITION EXCLUSIVE</span>
+                            <span class="subtitle truncate-text">NUEVA COLECCIÓN OTOÑO • INVIERNO</span>
+                        </div>
+                        <h2 class="hero-heading">Fragancias que despiertan tu esencia</h2>
+                        <p class="hero-desc truncate-2-lines">Más que un perfume, una firma olfativa que trasciende y define tu presencia.</p>
+                        
+                        <div class="hero-actions">
+                            <button class="hero-button" data-view="catalogo">
+                                <span>Explorar Catálogo</span>
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                            <button class="hero-secondary-button" data-view="colecciones">
+                                <span>Ver Colecciones</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hero-image">
+                        <div class="hero-glow-halo" aria-hidden="true"></div>
+                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80"
+                            alt="Perfume de lujo Essenza Colección Oro"
+                            loading="lazy"
+                            decoding="async"
+                            width="430"
+                            height="430">
+                    </div>
+
+                    <div class="hero-side-text" aria-hidden="true">
+                        <span>ÉLÉGANCE</span> • <span>LUXE</span> • <span>DISTINCTION</span>
+                    </div>
+                </div>
+
+                <button class="slider-btn next" aria-label="Siguiente diapositiva">
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+
+                <div class="slider-dots" role="tablist" aria-label="Controles del carrusel">
+                    <button class="dot active" role="tab" aria-label="Diapositiva 1" aria-selected="true"></button>
+                    <button class="dot" role="tab" aria-label="Diapositiva 2" aria-selected="false"></button>
+                    <button class="dot" role="tab" aria-label="Diapositiva 3" aria-selected="false"></button>
+                    <button class="dot" role="tab" aria-label="Diapositiva 4" aria-selected="false"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISTA 2: CATÁLOGO EXCLUSIVO ================= -->
+        <section id="view-catalogo" class="app-view" aria-label="Catálogo de fragancias" style="display: none;">
+            <div class="section-title">
+                <div>
+                    <span class="subtitle truncate-text">SELECCIÓN BOUTIQUE</span>
+                    <h2>Catálogo de Fragancias</h2>
+                </div>
+                <p class="catalog-header-desc truncate-text">Búsqueda en tiempo real y filtrado olfativo inmediato</p>
+            </div>
+
+            <!-- Buscador y Filtros -->
+            <div class="catalog-controls">
+                <div class="search-box-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+                    <input type="text" id="buscadorPerfumes" class="search-input" placeholder="Buscar por fragancia, diseñador o nota (ej. Dior, Chanel, Sauvage)..." autocomplete="off" aria-label="Buscador de perfumes">
+                    <button id="btnLimpiarBusqueda" class="clear-search-btn" aria-label="Limpiar búsqueda" style="display: none;">
+                        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <!-- Botones de Filtro (Touch Targets >= 44px) -->
+                <div class="filter-pills" role="tablist" aria-label="Filtrar por categoría">
+                    <button class="filter-pill active" data-filter="todos" role="tab" aria-selected="true">Todas las piezas</button>
+                    <button class="filter-pill" data-filter="mujer" role="tab" aria-selected="false">Pour Femme</button>
+                    <button class="filter-pill" data-filter="hombre" role="tab" aria-selected="false">Pour Homme</button>
+                    <button class="filter-pill" data-filter="top" role="tab" aria-selected="false">Best Sellers</button>
+                </div>
+            </div>
+
+            <!-- AUDITORÍA XSS: Feedback Sanitizado Estrictamente con .text() (Nunca .html()) -->
+            <div id="feedbackBusqueda" class="search-feedback" style="display: none;" role="status">
+                <i class="fa-solid fa-filter" aria-hidden="true"></i>
+                <span>Resultados para: </span>
+                <strong id="terminoBusquedaSanitizado" class="feedback-term"></strong>
+                <span id="cantidadResultados" class="feedback-count"></span>
+            </div>
+
+            <!-- Grid de Perfumes de Lujo -->
+            <div id="catalogoGrid" class="catalog-grid">
+
+                <!-- Perfume 1 -->
+                <article class="product-card" data-category="hombre top" data-brand="dior" data-name="dior sauvage eau de parfum">
+                    <span class="product-tag">BEST SELLER</span>
+                    <div class="product-img-box">
+                        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80"
+                            alt="Dior Sauvage Eau de Parfum"
+                            loading="lazy"
+                            decoding="async"
+                            width="300"
+                            height="300"
+                            class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-brand truncate-text">CHRISTIAN DIOR</span>
+                        <h3 class="product-title truncate-text">Sauvage Eau de Parfum</h3>
+                        <p class="product-notes truncate-2-lines">Bergamota de Calabria vibrante, ambroxan noble y notas envolventes de vainilla de Papúa.</p>
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="currency">Bs.</span> 890
+                            </div>
+                            <button class="btn-add-cart" data-id="1" data-name="Dior Sauvage" data-price="890" aria-label="Añadir Dior Sauvage al carrito">
+                                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                                <span>Añadir</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Perfume 2 -->
+                <article class="product-card" data-category="mujer top" data-brand="chanel" data-name="chanel coco mademoiselle">
+                    <span class="product-tag">EXCLUSIVO</span>
+                    <div class="product-img-box">
+                        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80"
+                            alt="Chanel Coco Mademoiselle"
+                            loading="lazy"
+                            decoding="async"
+                            width="300"
+                            height="300"
+                            class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-brand truncate-text">CHANEL PARIS</span>
+                        <h3 class="product-title truncate-text">Coco Mademoiselle</h3>
+                        <p class="product-notes truncate-2-lines">Aroma oriental ambarino de fuerte personalidad con naranja viva, rosa de mayo y pachulí refinado.</p>
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="currency">Bs.</span> 950
+                            </div>
+                            <button class="btn-add-cart" data-id="2" data-name="Chanel Coco Mademoiselle" data-price="950" aria-label="Añadir Chanel Coco Mademoiselle al carrito">
+                                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                                <span>Añadir</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Perfume 3 -->
+                <article class="product-card" data-category="hombre" data-brand="armani" data-name="giorgio armani acqua di gio">
+                    <span class="product-tag">ICÓNICO</span>
+                    <div class="product-img-box">
+                        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80"
+                            alt="Acqua Di Giò Giorgio Armani"
+                            loading="lazy"
+                            decoding="async"
+                            width="300"
+                            height="300"
+                            class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-brand truncate-text">GIORGIO ARMANI</span>
+                        <h3 class="product-title truncate-text">Acqua Di Giò Profondo</h3>
+                        <p class="product-notes truncate-2-lines">Frescura marina intensa con acordes cítricos mediterráneos, romero balsámico y cedro noble.</p>
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="currency">Bs.</span> 780
+                            </div>
+                            <button class="btn-add-cart" data-id="3" data-name="Acqua Di Giò" data-price="780" aria-label="Añadir Acqua Di Giò al carrito">
+                                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                                <span>Añadir</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Perfume 4 -->
+                <article class="product-card" data-category="mujer" data-brand="ysl" data-name="yves saint laurent libre">
+                    <span class="product-tag">COUTURE</span>
+                    <div class="product-img-box">
+                        <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=600&q=80"
+                            alt="Yves Saint Laurent Libre"
+                            loading="lazy"
+                            decoding="async"
+                            width="300"
+                            height="300"
+                            class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-brand truncate-text">YVES SAINT LAURENT</span>
+                        <h3 class="product-title truncate-text">Libre Eau de Parfum</h3>
+                        <p class="product-notes truncate-2-lines">La flor de azahar marroquí se funde con la audacia de la lavanda francesa y la mandarina madura.</p>
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="currency">Bs.</span> 870
+                            </div>
+                            <button class="btn-add-cart" data-id="4" data-name="YSL Libre" data-price="870" aria-label="Añadir YSL Libre al carrito">
+                                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                                <span>Añadir</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Perfume 5 -->
+                <article class="product-card" data-category="hombre top" data-brand="versace" data-name="versace eros flame">
+                    <span class="product-tag">PASSIONE</span>
+                    <div class="product-img-box">
+                        <img src="https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=600&q=80"
+                            alt="Versace Eros Flame"
+                            loading="lazy"
+                            decoding="async"
+                            width="300"
+                            height="300"
+                            class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-brand truncate-text">VERSACE</span>
+                        <h3 class="product-title truncate-text">Eros Flame Parfum</h3>
+                        <p class="product-notes truncate-2-lines">Cítricos italianos luminosos, pimienta negra salvaje, romero y maderas nobles de cedro tejano.</p>
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="currency">Bs.</span> 740
+                            </div>
+                            <button class="btn-add-cart" data-id="5" data-name="Versace Eros" data-price="740" aria-label="Añadir Versace Eros al carrito">
+                                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                                <span>Añadir</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Perfume 6 -->
+                <article class="product-card" data-category="mujer top" data-brand="ch" data-name="carolina herrera good girl">
+                    <span class="product-tag">BEST SELLER</span>
+                    <div class="product-img-box">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80"
+                            alt="Carolina Herrera Good Girl"
+                            loading="lazy"
+                            decoding="async"
+                            width="300"
+                            height="300"
+                            class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-brand truncate-text">CAROLINA HERRERA</span>
+                        <h3 class="product-title truncate-text">Good Girl Velvet Fatale</h3>
+                        <p class="product-notes truncate-2-lines">Sensualidad misteriosa guiada por nardo blanco, jazmín sambac, cacao tostado y haba tonka.</p>
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="currency">Bs.</span> 830
+                            </div>
+                            <button class="btn-add-cart" data-id="6" data-name="CH Good Girl" data-price="830" aria-label="Añadir Carolina Herrera Good Girl al carrito">
+                                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                                <span>Añadir</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <p>No se encontraron piezas olfativas que coincidan con su búsqueda.</p>
+            </div>
+        </section>
+
+        <!-- ================= VISTA 3: COLECCIONES ================= -->
+        <section id="view-colecciones" class="app-view" aria-label="Colecciones de alta perfumería" style="display: none;">
+            <div class="section-title">
+                <div>
+                    <span class="subtitle truncate-text">CURATORÍA OLFATIVA</span>
+                    <h2>Colecciones Signature</h2>
+                </div>
+                <p class="catalog-header-desc truncate-text">Descubre la familia aromática diseñada a tu medida</p>
+            </div>
+
+            <div class="categories">
+                <article class="category-card women-card">
+                    <div class="card-content">
+                        <span class="card-label">POUR FEMME</span>
+                        <h3>Esencia<br>Femenina</h3>
+                        <p class="truncate-2-lines">Armonías florales, orientales y chipres que celebran la feminidad contemporánea.</p>
+                        <button class="btn-category-action" data-view="catalogo" data-filter="mujer" aria-label="Ver colección femenina">
+                            <span>Ver Colección</span>
+                            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="category-card men-card">
+                    <div class="card-content">
+                        <span class="card-label">POUR HOMME</span>
+                        <h3>Carácter<br>Masculino</h3>
+                        <p class="truncate-2-lines">Fragancias intensas, amaderadas y especiadas para personalidades seguras e imponentes.</p>
+                        <button class="btn-category-action" data-view="catalogo" data-filter="hombre" aria-label="Ver colección masculina">
+                            <span>Ver Colección</span>
+                            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="category-card top-card">
+                    <span class="top-badge">BEST SELLERS</span>
+                    <div class="card-content">
+                        <span class="card-label">ÉDITIONS ICONIQUES</span>
+                        <h3>Más<br>Aclamados</h3>
+                        <p class="truncate-2-lines">Las creaciones maestras consagradas como las favoritas de nuestros clientes distinguidos.</p>
+                        <button class="btn-category-action" data-view="catalogo" data-filter="top" aria-label="Ver más aclamados">
+                            <span>Ver Selección</span>
+                            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ================= VISTA 4: GARANTÍA & CASAS PERFUMISTAS ================= -->
+        <section id="view-garantia" class="app-view" aria-label="Garantía y Casas Perfumistas" style="display: none;">
+            <div class="section-title">
+                <div>
+                    <span class="subtitle truncate-text">STANDARDS DE EXCELENCIA</span>
+                    <h2>Compromiso & Casas Matrices</h2>
+                </div>
+                <p class="catalog-header-desc truncate-text">Garantía inquebrantable de autenticidad en cada frasco</p>
+            </div>
+
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon-wrap">
+                        <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4 class="truncate-text">Envíos Especializados</h4>
+                        <p class="truncate-text">Entrega exprés asegurada a toda Bolivia con empaque térmico protector.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon-wrap">
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4 class="truncate-text">100% Auténticos</h4>
+                        <p class="truncate-text">Trazabilidad oficial de importación y sellos intactos de origen.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon-wrap">
+                        <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4 class="truncate-text">Transacciones Blindadas</h4>
+                        <p class="truncate-text">Pago con QR simple, tarjetas bancarias y pasarelas encriptadas.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon-wrap">
+                        <i class="fa-solid fa-gem" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4 class="truncate-text">Experiencia Privilegiada</h4>
+                        <p class="truncate-text">Muestras exclusivas de cortesía incluidas en cada pedido.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="brands-wrapper">
+                <h3 class="brands-subheading">Casas Oficiales Disponibles</h3>
+                <div class="brand-pills-list">
+                    <button class="brand-pill" data-view="catalogo" data-search="dior">DIOR</button>
+                    <button class="brand-pill" data-view="catalogo" data-search="chanel">CHANEL</button>
+                    <button class="brand-pill" data-view="catalogo" data-search="versace">VERSACE</button>
+                    <button class="brand-pill" data-view="catalogo" data-search="armani">GIORGIO ARMANI</button>
+                    <button class="brand-pill" data-view="catalogo" data-search="ysl">YVES SAINT LAURENT</button>
+                    <button class="brand-pill" data-view="catalogo" data-search="carolina herrera">CAROLINA HERRERA</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISTA 5: CONTACTO & CONCIERGE ================= -->
+        <section id="view-contacto" class="app-view" aria-label="Contacto y Concierge" style="display: none;">
+            <div class="section-title">
+                <div>
+                    <span class="subtitle truncate-text">ATENCIÓN PERSONALIZADA</span>
+                    <h2>Concierge & Boutique</h2>
+                </div>
+                <p class="catalog-header-desc truncate-text">Asesoría olfativa experta y seguimiento de pedidos</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-info-grid">
+                    <div class="contact-box">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <h4>Boutique Principal</h4>
+                        <p>La Paz, Bolivia</p>
+                        <small>Zona Sur • Calacoto</small>
+                    </div>
+                    <div class="contact-box">
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                        <h4>Consultas & Concierge</h4>
+                        <p>concierge@essenza.com</p>
+                        <small>Atención 24/7</small>
+                    </div>
+                    <div class="contact-box">
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <h4>Línea Directa</h4>
+                        <p>+591 71234567</p>
+                        <small>Lunes a Sábado: 09:00 - 20:00</small>
+                    </div>
+                </div>
+
+                <div class="social-channels">
+                    <a href="#" aria-label="Instagram de Essenza" class="social-btn">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        <span>Instagram Oficial</span>
+                    </a>
+                    <a href="#" aria-label="TikTok de Essenza" class="social-btn">
+                        <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="#" aria-label="Facebook de Essenza" class="social-btn">
+                        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" aria-label="WhatsApp Concierge" class="social-btn">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        <span>WhatsApp Concierge</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= BARRA DE BOTONES INFERIOR (PWA MOBILE) ================= -->
+    <nav class="bottom-nav-bar" aria-label="Navegación móvil PWA">
+        <button class="nav-tab-btn active" data-view="inicio" aria-label="Inicio">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            <span>Inicio</span>
+        </button>
+        <button class="nav-tab-btn" data-view="catalogo" aria-label="Catálogo">
+            <i class="fa-solid fa-spray-can-sparkles" aria-hidden="true"></i>
+            <span>Catálogo</span>
+        </button>
+        <button class="nav-tab-btn" data-view="colecciones" aria-label="Colecciones">
+            <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+            <span>Colección</span>
+        </button>
+        <button class="nav-tab-btn" data-view="garantia" aria-label="Garantía">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <span>Garantía</span>
+        </button>
+        <button class="nav-tab-btn" data-view="contacto" aria-label="Contacto">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span>Contacto</span>
+        </button>
+    </nav>
+
+    <!-- ================= MODAL REGISTRO (100dvh Y ESTABILIDAD ANTE TECLADO) ================= -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display: none;">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Cerrar modal">&times;</button>
+
+            <div class="modal-header">
+                <i class="fa-brands fa-pagelines" aria-hidden="true"></i>
+                <h2 id="modalTitle">Membresía Essenza</h2>
+                <p class="truncate-2-lines">Accede a preventas privadas, catálogos exclusivos y beneficios para miembros.</p>
+            </div>
+
+            <form id="registroForm" novalidate>
+                <input type="text" id="nombre" placeholder="Nombre (solo letras)" autocomplete="given-name" required>
+                <input type="text" id="apellido" placeholder="Apellido (solo letras)" autocomplete="family-name" required>
+                <input type="text" id="ci" placeholder="CI (solo números, 5-10 dígitos)" inputmode="numeric" maxlength="10" required>
+
+                <select id="ciudad" required>
+                    <option value="">Seleccione Ciudad de Entrega</option>
+                    <option>La Paz</option>
+                    <option>Cochabamba</option>
+                    <option>Santa Cruz</option>
+                    <option>Oruro</option>
+                    <option>Potosí</option>
+                    <option>Tarija</option>
+                    <option>Chuquisaca</option>
+                    <option>Beni</option>
+                    <option>Pando</option>
+                </select>
+
+                <input type="tel" id="telefono" placeholder="Teléfono Móvil (8 dígitos, inicia en 6 o 7)" inputmode="numeric" maxlength="8" required>
+                <input type="email" id="correo" placeholder="Correo electrónico corporativo / personal" autocomplete="email" required>
+                <input type="password" id="password" placeholder="Contraseña (mín. 8 caracteres, 1 mayúscula, 1 número)" autocomplete="new-password" required>
+                <input type="password" id="confirmar" placeholder="Confirmar contraseña" autocomplete="new-password" required>
+
+                <label class="terms" for="terminos">
+                    <input type="checkbox" id="terminos" required>
+                    <span>Acepto los términos y condiciones de membresía</span>
+                </label>
+
+                <button type="submit" class="register-btn">Crear Cuenta de Miembro</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= TOAST FEEDBACK ACCESIBLE Y SANITIZADO ================= -->
+    <div id="toastFeedback" class="toast-feedback" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+        <span id="toastMessage" class="truncate-text"></span>
+    </div>
+
+    <script src="scrip.js"></script>
+</body>
+
+</html>
