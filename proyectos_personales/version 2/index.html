@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>Pollos Yack's | El Tradicional Sabor Paceño desde los 80s</title>
+  <meta
+    name="description"
+    content="Pollos Yack's (Pollos Jack) - Delicioso pollo a la canasta en La Paz y El Alto. Sucursales en Sopocachi, Camacho, Vita, Montenegro, Achumani, Miraflores y El Alto. Pide por WhatsApp y PedidosYa."
+  />
+
+  <!-- Configuración PWA y Móvil -->
+  <meta name="theme-color" id="theme-color-meta" content="#FF7B00" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Pollos Yack's" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="manifest" href="manifest.json" />
+  <link
+    rel="icon"
+    href="https://assets.olaclick.app/companies/logos/40f62129-d3fa-4bb8-b494-8af219ca4239.png"
+    type="image/png"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://assets.olaclick.app/companies/logos/40f62129-d3fa-4bb8-b494-8af219ca4239.png"
+  />
+
+  <!-- FontAwesome 6 Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <!-- Estilos Adaptados PWA SPA Sin Scroll -->
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+  <!-- Contenedor Raíz de la Aplicación -->
+  <div class="app-wrapper">
+
+    <!-- Banner Informativo de Modo Offline -->
+    <div class="offline-banner" id="offline-banner">
+      <i class="fa-solid fa-wifi-slash me-1"></i> Modo Offline Activo — Menú y Carrito 100% funcionales
+    </div>
+
+    <!-- =========================================================================
+         NAVBAR COMPLETO E INTUITIVO (ORGANIZADO EN 2 FILAS CLARAS)
+         ========================================================================= -->
+    <header class="navbar-custom">
+      <!-- Fila 1: Logo de Marca y Acciones Rápidas -->
+      <div class="navbar-top-row container">
+        <div class="navbar-brand-logo" onclick="showView('inicio')">
+          <div class="logo-badge">
+            <img
+              src="https://assets.olaclick.app/companies/logos/40f62129-d3fa-4bb8-b494-8af219ca4239.png"
+              alt="Pollos Yack's Logo"
+            />
+          </div>
+          <div class="brand-text">
+            Pollos <span>Yack's</span>
+          </div>
+        </div>
+
+        <div class="navbar-actions">
+          <!-- Botón Ver Pedido -->
+          <button class="btn-cart-nav" onclick="openCart()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="d-none d-sm-inline">Mi Pedido</span>
+            <span class="cart-count-badge" id="cart-badge">0</span>
+          </button>
+
+          <!-- Contenedor Auth Dinámico -->
+          <div id="auth-nav-container">
+            <button class="btn-auth-nav" onclick="openAuthModal('login')">
+              <i class="fa-solid fa-right-to-bracket me-1"></i> Ingresar
+            </button>
+          </div>
+
+          <!-- Selector Modo Claro / Modo Oscuro -->
+          <button
+            class="theme-toggle-btn"
+            onclick="toggleTheme()"
+            aria-label="Cambiar modo de color"
+            title="Cambiar modo de color"
+          >
+            <i class="fa-solid fa-moon" id="theme-icon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Fila 2: Botones de Navegación a Modo de Navbar -->
+      <nav class="navbar-nav-bar" aria-label="Navegación principal">
+        <div class="nav-scroll-container">
+          <button class="nav-tab-btn active" data-view="inicio" onclick="showView('inicio')">
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+          </button>
+          <button class="nav-tab-btn" data-view="promos" onclick="showView('promos')">
+            <i class="fa-solid fa-fire"></i>
+            <span>Promociones</span>
+          </button>
+          <button class="nav-tab-btn" data-view="menu" onclick="showView('menu')">
+            <i class="fa-solid fa-utensils"></i>
+            <span>Menú Digital</span>
+          </button>
+          <button class="nav-tab-btn" data-view="sucursales" onclick="showView('sucursales')">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Sucursales</span>
+          </button>
+          <button class="nav-tab-btn" data-view="nosotros" onclick="showView('nosotros')">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Historia</span>
+          </button>
+          <button class="nav-tab-btn" data-view="reseñas" onclick="showView('reseñas')">
+            <i class="fa-solid fa-star"></i>
+            <span>Reseñas</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- =========================================================================
+         ÁREA DE PANTALLAS / VISTAS SPA (CADA PANTALLA ACTIVA CON SU BOTÓN)
+         ========================================================================= -->
+    <main class="app-main">
+
+      <!-- PANTALLA 1: INICIO -->
+      <section id="view-inicio" class="view-screen active">
+        <div class="container">
+          <!-- Banner Hero Principal -->
+          <div class="hero-card-banner">
+            <div class="row align-items-center">
+              <div class="col-lg-7">
+                <div class="hero-badge-tag">
+                  <i class="fa-solid fa-star"></i> 4.0/5 Estrellas (+400 Reseñas en Sopocachi)
+                </div>
+                <h1 class="hero-title">
+                  El Auténtico <span>Pollo a la Canasta</span> Paceño
+                </h1>
+                <p class="hero-subtitle">
+                  Desde los años 80, brindamos la receta tradicional que apasiona a La Paz y El
+                  Alto. Pollo crujiente por fuera, jugoso por dentro, con papas doraditas y sazón inolvidable.
+                </p>
+                <div class="hero-actions">
+                  <button class="btn btn-hero-primary" onclick="showView('menu')">
+                    <i class="fa-solid fa-utensils me-1"></i> Ver Menú &amp; Pedir
+                  </button>
+                  <button class="btn btn-hero-secondary" onclick="showView('sucursales')">
+                    <i class="fa-solid fa-location-dot me-1"></i> 7 Sucursales
+                  </button>
+                  <a
+                    href="https://pedidosya.com.bo"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn-hero-secondary text-warning"
+                  >
+                    <i class="fa-solid fa-motorcycle me-1"></i> PedidosYa
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <div class="hero-image-wrapper">
+                  <img
+                    src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=800&q=80"
+                    alt="Pollo a la Canasta Pollos Yack's"
+                    class="hero-img-main"
+                  />
+                  <div class="floating-card-rating">
+                    <i class="fa-solid fa-award"></i>
+                    <div>
+                      <div class="fw-bold text-white mb-0" style="font-size: 0.85rem">Sabor Tradicional</div>
+                      <small class="text-warning">Garantía Paceña 100%</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barra de Estadísticas -->
+          <div class="stats-bar">
+            <div class="row g-3">
+              <div class="col-6 col-md-3">
+                <div class="stat-item">
+                  <div class="stat-number">7</div>
+                  <div class="stat-label">Sucursales Paceñas</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="stat-item">
+                  <div class="stat-number">Bs 20 - 40</div>
+                  <div class="stat-label">Combos Económicos</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="stat-item">
+                  <div class="stat-number">12:00 - 21:30</div>
+                  <div class="stat-label">Atención Diaria</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="stat-item">
+                  <div class="stat-number">+40 Años</div>
+                  <div class="stat-label">Tradición Paceña</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accesos Rápidos de Navegación por Botones -->
+          <div class="home-shortcuts">
+            <div class="row g-3">
+              <div class="col-6 col-md-3">
+                <div class="shortcut-card" onclick="showView('menu')">
+                  <div class="shortcut-icon"><i class="fa-solid fa-utensils"></i></div>
+                  <h4 class="shortcut-title">Menú Digital</h4>
+                  <p class="shortcut-desc">Pollos, hamburguesas y combos</p>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="shortcut-card" onclick="showView('promos')">
+                  <div class="shortcut-icon"><i class="fa-solid fa-fire"></i></div>
+                  <h4 class="shortcut-title">Promociones</h4>
+                  <p class="shortcut-desc">Ofertas y combos especiales</p>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="shortcut-card" onclick="showView('sucursales')">
+                  <div class="shortcut-icon"><i class="fa-solid fa-store"></i></div>
+                  <h4 class="shortcut-title">Sucursales</h4>
+                  <p class="shortcut-desc">La Paz y El Alto</p>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="shortcut-card" onclick="showView('nosotros')">
+                  <div class="shortcut-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                  <h4 class="shortcut-title">Nuestra Historia</h4>
+                  <p class="shortcut-desc">Desde los años 80</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANTALLA 2: PROMOCIONES -->
+      <section id="view-promos" class="view-screen">
+        <div class="container">
+          <div class="section-title-wrapper">
+            <span class="section-subtitle">¡Super Ofertas de la Casa!</span>
+            <h2 class="section-title">Promociones Destacadas</h2>
+          </div>
+
+          <div class="row g-4">
+            <!-- Promo 1 -->
+            <div class="col-md-4">
+              <div class="promo-card">
+                <div class="promo-ribbon">Imperdible</div>
+                <div class="promo-card-body">
+                  <span class="promo-badge-tag"><i class="fa-solid fa-fire me-1"></i> Favorito de Clientes</span>
+                  <h3 class="promo-title">+ Bs 1 Octavo Extra</h3>
+                  <p class="promo-desc">
+                    En la compra de cualquiera de tus combos de pollo a la canasta favoritos, añade solo <strong>Bs 1</strong> y recibe 1/8 adicional de pollo crujiente.
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="promo-price-tag">+ Bs 1 <small>/ extra</small></div>
+                    <button
+                      class="btn btn-sm btn-outline-warning rounded-pill px-3 fw-bold"
+                      onclick="addPromoToCart('Octavo de Pollo Extra (Promo +1 Bs)', 1)"
+                    >
+                      + Añadir
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Promo 2 -->
+            <div class="col-md-4">
+              <div class="promo-card">
+                <div class="promo-ribbon">Familiar</div>
+                <div class="promo-card-body">
+                  <span class="promo-badge-tag"><i class="fa-solid fa-users me-1"></i> Para Compartir</span>
+                  <h3 class="promo-title">Combo Canasta Familiar</h3>
+                  <p class="promo-desc">
+                    6 piezas seleccionadas (Piernas y Entrepiernas) + Porción grande de Papas Fritas crocantes + 1 Coca-Cola 2 Litros bien fría.
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="promo-price-tag">Bs 65 <small>/ combo</small></div>
+                    <button
+                      class="btn btn-sm btn-warning rounded-pill px-3 fw-bold text-dark"
+                      onclick="addPromoToCart('Combo Canasta Familiar (6 Presas + Papas + Coca-Cola 2L)', 65)"
+                    >
+                      + Pedir Combo
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Promo 3 -->
+            <div class="col-md-4">
+              <div class="promo-card">
+                <div class="promo-ribbon">Pet Friendly</div>
+                <div class="promo-card-body">
+                  <span class="promo-badge-tag"><i class="fa-solid fa-paw me-1"></i> Apoyo Animal</span>
+                  <h3 class="promo-title">Seguro para Mascotas</h3>
+                  <p class="promo-desc">
+                    Suma solo <strong>Bs 5</strong> a tu pedido y contribuye al fondo de protección y alimento para peluditos en situación de calle de La Paz.
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="promo-price-tag">+ Bs 5 <small>/ aporte</small></div>
+                    <button
+                      class="btn btn-sm btn-outline-warning rounded-pill px-3 fw-bold"
+                      onclick="addPromoToCart('Seguro para Mascotas (Aporte Solidario)', 5)"
+                    >
+                      + Sumar Bs 5
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANTALLA 3: MENÚ DIGITAL -->
+      <section id="view-menu" class="view-screen">
+        <div class="container">
+          <div class="section-title-wrapper">
+            <span class="section-subtitle">Sabor Directo a tu Mesa</span>
+            <h2 class="section-title">Menú Digital con Precios Actualizados</h2>
+          </div>
+
+          <!-- Buscador de Platos -->
+          <div class="menu-search-box">
+            <i class="fa-solid fa-magnifying-glass menu-search-icon"></i>
+            <input
+              type="text"
+              id="menu-search-input"
+              class="menu-search-input"
+              placeholder="Buscar plato, combo o hamburguesa (ej. Pierna, Salchipapa)..."
+              oninput="onSearchInput(event)"
+            />
+          </div>
+
+          <!-- Botones de Filtro por Categoría -->
+          <div class="menu-filter-nav" id="menu-categories"></div>
+
+          <!-- Grilla de Platos -->
+          <div class="row g-4" id="products-grid"></div>
+        </div>
+      </section>
+
+      <!-- PANTALLA 4: SUCURSALES -->
+      <section id="view-sucursales" class="view-screen">
+        <div class="container">
+          <div class="section-title-wrapper">
+            <span class="section-subtitle">Estamos Cerca de Ti</span>
+            <h2 class="section-title">Nuestras Sucursales en La Paz y El Alto</h2>
+            <p class="text-muted mt-2">
+              Horario de Atención General: <strong>12:00 a 21:30</strong> todos los días
+            </p>
+          </div>
+
+          <!-- Grilla de Sucursales -->
+          <div class="row g-4" id="branches-grid"></div>
+        </div>
+      </section>
+
+      <!-- PANTALLA 5: HISTORIA & CONTACTO -->
+      <section id="view-nosotros" class="view-screen">
+        <div class="container">
+          <div class="about-card-box">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-5">
+                <div class="about-img-box">
+                  <img
+                    src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=800&q=80"
+                    alt="Tradición Pollos Yack's"
+                  />
+                  <div class="about-experience-badge">
+                    <div class="years">40+</div>
+                    <div class="text">Años de Sabor</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <span class="section-subtitle">Nuestra Historia</span>
+                <h2 class="fw-bold mb-3" style="font-size: 1.8rem">
+                  Una Tradición Paceña que Perdura en Cada Bocado
+                </h2>
+                <p class="text-secondary" style="font-size: 0.95rem">
+                  Fundada en la emblemática zona de Sopocachi (Av. Jaimes Freyre),
+                  <strong>Pollos Yack's</strong> (conocido popularmente como
+                  <em>Pollos Jack</em>) se convirtió desde la década de los 80 en el punto de encuentro favorito de familias, estudiantes y trabajadores paceños.
+                </p>
+                <p class="text-secondary" style="font-size: 0.95rem">
+                  Nuestro secreto reside en la selección de ingredientes frescos de alta calidad, un marinado criollo exclusivo y el punto perfecto de crocancia en nuestro empanizado tradicional.
+                </p>
+
+                <div class="row g-2 mt-2">
+                  <div class="col-6">
+                    <div class="feature-pill">
+                      <i class="fa-solid fa-check-circle text-warning fs-5"></i>
+                      <span class="fw-semibold small">Sabor 100% Casero</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="feature-pill">
+                      <i class="fa-solid fa-check-circle text-warning fs-5"></i>
+                      <span class="fw-semibold small">Precios Justos</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="feature-pill">
+                      <i class="fa-solid fa-check-circle text-warning fs-5"></i>
+                      <span class="fw-semibold small">Atención Cálida</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="feature-pill">
+                      <i class="fa-solid fa-check-circle text-warning fs-5"></i>
+                      <span class="fw-semibold small">Ingredientes Frescos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Canales Directos de Atención -->
+            <div class="row g-3 mt-4 pt-4" style="border-top: 1px solid var(--border-color)">
+              <div class="col-md-4 text-center">
+                <i class="fa-solid fa-phone text-warning fs-4 mb-2"></i>
+                <h5 class="fw-bold mb-1">Teléfono Directo</h5>
+                <a href="tel:77725603" class="text-primary fw-bold">77725603</a>
+              </div>
+              <div class="col-md-4 text-center">
+                <i class="fa-solid fa-clock text-warning fs-4 mb-2"></i>
+                <h5 class="fw-bold mb-1">Horarios</h5>
+                <p class="text-muted small mb-0">Lunes a Domingo 12:00 a 21:30</p>
+              </div>
+              <div class="col-md-4 text-center">
+                <i class="fa-brands fa-whatsapp text-warning fs-4 mb-2"></i>
+                <h5 class="fw-bold mb-1">WhatsApp Pedidos</h5>
+                <a href="https://wa.me/59177725603" target="_blank" rel="noopener" class="text-primary fw-bold">+591 77725603</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANTALLA 6: RESEÑAS -->
+      <section id="view-reseñas" class="view-screen">
+        <div class="container">
+          <div class="section-title-wrapper">
+            <span class="section-subtitle">Lo que dicen en La Paz</span>
+            <h2 class="section-title">Opiniones de Nuestros Clientes</h2>
+            <p class="text-muted mt-2">
+              Promedio 4/5 Estrellas con más de 400 opiniones registradas en Sopocachi
+            </p>
+          </div>
+
+          <!-- Grilla de Reseñas -->
+          <div class="row g-4" id="reviews-grid"></div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- =========================================================================
+       DRAWER / OFFCANVAS CARRITO DE COMPRAS
+       ========================================================================= -->
+  <div class="offcanvas-backdrop" id="cart-backdrop" onclick="closeCart()"></div>
+
+  <aside class="cart-offcanvas" id="cart-offcanvas" aria-label="Tu Pedido">
+    <div class="cart-header">
+      <h5 class="offcanvas-title fw-bold text-white mb-0">
+        <i class="fa-solid fa-cart-shopping me-2"></i> Tu Pedido
+      </h5>
+      <button
+        type="button"
+        class="btn-close"
+        onclick="closeCart()"
+        aria-label="Cerrar"
+      ></button>
+    </div>
+
+    <div class="offcanvas-body">
+      <!-- Items agregados -->
+      <div class="cart-items-container" id="cart-items-container"></div>
+
+      <!-- Resumen y opciones de pedido -->
+      <div class="cart-summary">
+        <div class="mb-3">
+          <label class="form-label fw-bold cart-label mb-1" style="font-size: 0.85rem" for="cart-branch-select">
+            Sucursal de Retiro / Envío:
+          </label>
+          <select
+            class="form-select form-select-sm cart-select"
+            id="cart-branch-select"
+            onchange="onBranchChange(event)"
+          ></select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold cart-label mb-1" style="font-size: 0.85rem">
+            Tipo de Pedido:
+          </label>
+          <div class="d-flex gap-3">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="orderTypeRadio"
+                id="typeDelivery"
+                value="Delivery"
+                checked
+                onchange="onOrderTypeChange('Delivery')"
+              />
+              <label class="form-check-label cart-label" style="font-size: 0.82rem" for="typeDelivery">
+                Delivery
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="orderTypeRadio"
+                id="typePickup"
+                value="Para Llevar"
+                onchange="onOrderTypeChange('Para Llevar')"
+              />
+              <label class="form-check-label cart-label" style="font-size: 0.82rem" for="typePickup">
+                Para Llevar
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold cart-label mb-1" style="font-size: 0.85rem" for="cart-metodo-pago">
+            Método de Pago:
+          </label>
+          <select
+            class="form-select form-select-sm cart-select"
+            id="cart-metodo-pago"
+            onchange="onMetodoPagoChange(event)"
+          >
+            <option value="Efectivo" selected>Efectivo</option>
+            <option value="QR">QR Simple</option>
+            <option value="Tarjeta">Tarjeta de Débito/Crédito</option>
+          </select>
+        </div>
+
+        <!-- Datos del cliente para el pedido -->
+        <div class="mb-3">
+          <label class="form-label fw-bold cart-label mb-1" style="font-size: 0.85rem" for="order-customer-name">
+            Nombre del Cliente (Solo letras):
+          </label>
+          <input
+            type="text"
+            id="order-customer-name"
+            class="form-select cart-select checkout-input"
+            placeholder="Ej. Juan Carlos (sin números)"
+            data-validate="letters"
+            pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+            title="Solo se permiten letras y espacios"
+            maxlength="50"
+          />
+          <div class="field-error-hint" id="hint-order-customer-name"></div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold cart-label mb-1" style="font-size: 0.85rem" for="order-customer-phone">
+            Teléfono de Contacto (Solo números):
+          </label>
+          <input
+            type="tel"
+            id="order-customer-phone"
+            inputmode="numeric"
+            class="form-select cart-select checkout-input"
+            placeholder="Ej. 77725603 (solo dígitos)"
+            data-validate="numbers"
+            pattern="^[0-9]+$"
+            title="Solo se permiten números"
+            maxlength="10"
+          />
+          <div class="field-error-hint" id="hint-order-customer-phone"></div>
+        </div>
+
+        <!-- Dirección de entrega -->
+        <div class="mb-3" id="delivery-address-container">
+          <label class="form-label fw-bold cart-label mb-1" style="font-size: 0.85rem" for="delivery-address">
+            Dirección de Entrega:
+          </label>
+          <input
+            type="text"
+            id="delivery-address"
+            class="form-select cart-select checkout-input"
+            placeholder="Av. / Calle N.º (ej. Av. Camacho 100)"
+          />
+          <input
+            type="text"
+            id="delivery-ref"
+            class="form-select cart-select checkout-input"
+            placeholder="Referencia (ej. Portón verde, Casa)"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold cart-label mb-1" style="font-size: 0.85rem" for="order-observation">
+            Observación (opcional):
+          </label>
+          <textarea
+            id="order-observation"
+            class="form-select cart-select checkout-input checkout-textarea"
+            rows="2"
+            placeholder="Sin cebolla, salsas extra, etc."
+          ></textarea>
+        </div>
+
+        <div id="cart-error-msg" class="checkout-error" style="display: none"></div>
+        <div id="cart-success-msg" class="checkout-success" style="display: none"></div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="fw-bold fs-5 cart-total-label">Total a Pagar:</span>
+          <span class="fw-extrabold text-danger fs-4" id="cart-total-price">Bs 0.00</span>
+        </div>
+
+        <!-- Confirmar Pedido -->
+        <button class="btn-checkout-send" id="btn-confirm-order" onclick="placeOrder()">
+          <i class="fa-solid fa-check fs-5"></i> Confirmar Pedido
+        </button>
+
+        <!-- WhatsApp Checkout -->
+        <button class="btn-whatsapp-send" onclick="sendWhatsAppOrder()">
+          <i class="fa-brands fa-whatsapp fs-4"></i> Enviar Pedido por WhatsApp
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MODAL DE AUTENTICACIÓN
+       ========================================================================= -->
+  <div class="auth-backdrop" id="auth-backdrop" onclick="closeAuthModal()"></div>
+
+  <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-label="Acceso de clientes">
+    <div class="auth-modal-content">
+      <button class="auth-close" onclick="closeAuthModal()" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2 class="auth-title">Pollos Yack's</h2>
+      <p class="auth-subtitle" id="auth-subtitle">Inicia sesión para pedir online</p>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="setAuthTab('login')">
+          Ingresar
+        </button>
+        <button class="auth-tab" id="tab-register" onclick="setAuthTab('register')">
+          Crear Cuenta
+        </button>
+      </div>
+
+      <div id="auth-error-msg" class="auth-error" style="display: none"></div>
+
+      <!-- Formulario Login -->
+      <form id="form-login" class="auth-form" onsubmit="handleLoginSubmit(event)">
+        <label class="auth-label" for="login-email">Correo electrónico</label>
+        <input
+          id="login-email"
+          type="email"
+          class="auth-input"
+          placeholder="tucorreo@ejemplo.com"
+          required
+        />
+
+        <label class="auth-label" for="login-pass">Contraseña</label>
+        <input
+          id="login-pass"
+          type="password"
+          class="auth-input"
+          placeholder="••••••••"
+          required
+        />
+
+        <button type="submit" class="auth-submit" id="btn-submit-login">
+          <i class="fa-solid fa-right-to-bracket me-2"></i> Ingresar
+        </button>
+      </form>
+
+      <!-- Formulario Registro -->
+      <form id="form-register" class="auth-form" style="display: none" onsubmit="handleRegisterSubmit(event)">
+        <div class="auth-row">
+          <div class="auth-col">
+            <label class="auth-label" for="reg-nombre">Nombre <span class="text-danger">*</span> (Solo letras)</label>
+            <input
+              id="reg-nombre"
+              type="text"
+              class="auth-input"
+              placeholder="Ej. Juan (sin números)"
+              data-validate="letters"
+              pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+              title="Solo se permiten letras y espacios"
+              maxlength="50"
+              autocomplete="given-name"
+              required
+            />
+            <div class="field-error-hint" id="hint-reg-nombre"></div>
+          </div>
+          <div class="auth-col">
+            <label class="auth-label" for="reg-apellido">Apellido <span class="text-danger">*</span> (Solo letras)</label>
+            <input
+              id="reg-apellido"
+              type="text"
+              class="auth-input"
+              placeholder="Ej. Pérez (sin números)"
+              data-validate="letters"
+              pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+              title="Solo se permiten letras y espacios"
+              maxlength="50"
+              autocomplete="family-name"
+              required
+            />
+            <div class="field-error-hint" id="hint-reg-apellido"></div>
+          </div>
+        </div>
+
+        <label class="auth-label" for="reg-correo">Correo electrónico <span class="text-danger">*</span></label>
+        <input
+          id="reg-correo"
+          type="email"
+          class="auth-input"
+          placeholder="tucorreo@ejemplo.com"
+          autocomplete="email"
+          required
+        />
+        <div class="field-error-hint" id="hint-reg-correo"></div>
+
+        <label class="auth-label" for="reg-telefono">Teléfono (opcional - Solo números)</label>
+        <input
+          id="reg-telefono"
+          type="tel"
+          inputmode="numeric"
+          class="auth-input"
+          placeholder="Ej. 70000000 (sin letras)"
+          data-validate="numbers"
+          pattern="^[0-9]+$"
+          title="Solo se permiten números"
+          maxlength="10"
+          autocomplete="tel"
+        />
+        <div class="field-error-hint" id="hint-reg-telefono"></div>
+
+        <div class="auth-row">
+          <div class="auth-col">
+            <label class="auth-label" for="reg-pass">Contraseña</label>
+            <input
+              id="reg-pass"
+              type="password"
+              class="auth-input"
+              placeholder="Mínimo 6 caracteres"
+              minlength="6"
+              required
+            />
+          </div>
+          <div class="auth-col">
+            <label class="auth-label" for="reg-pass2">Confirmar contraseña</label>
+            <input
+              id="reg-pass2"
+              type="password"
+              class="auth-input"
+              placeholder="Repite la contraseña"
+              minlength="6"
+              required
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="auth-submit" id="btn-submit-register">
+          <i class="fa-solid fa-user-plus me-2"></i> Crear Cuenta
+        </button>
+      </form>
+
+      <p class="auth-hint">
+        En <strong>Para Llevar</strong> no necesitas dirección. En <strong>Delivery</strong> la
+        pediremos al confirmar.
+      </p>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL DE MIS PEDIDOS
+       ========================================================================= -->
+  <div class="orders-backdrop" id="orders-backdrop" onclick="closeOrdersModal()"></div>
+
+  <div class="orders-modal" id="orders-modal" role="dialog" aria-modal="true" aria-label="Mis pedidos">
+    <div class="orders-content">
+      <div class="orders-header">
+        <h3 class="orders-title"><i class="fa-solid fa-receipt me-2"></i> Mis Pedidos</h3>
+        <button class="orders-close" onclick="closeOrdersModal()" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="orders-body">
+        <div class="orders-toolbar">
+          <span class="orders-count" id="orders-count">Total: 0</span>
+          <button class="orders-refresh" onclick="renderOrders()">
+            <i class="fa-solid fa-rotate"></i> Actualizar
+          </button>
+        </div>
+
+        <!-- Lista de Pedidos -->
+        <ul class="orders-list" id="orders-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script Principal -->
+  <script src="script.js"></script>
+</body>
+</html>

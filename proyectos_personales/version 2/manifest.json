@@ -1,0 +1,24 @@
+{
+  "name": "Pollos Yack's | El Tradicional Sabor Paceño",
+  "short_name": "Pollos Yack's",
+  "description": "El auténtico pollo a la canasta tradicional en La Paz y El Alto. Pide online o por WhatsApp.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#090D16",
+  "theme_color": "#FF7B00",
+  "icons": [
+    {
+      "src": "https://assets.olaclick.app/companies/logos/40f62129-d3fa-4bb8-b494-8af219ca4239.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://assets.olaclick.app/companies/logos/40f62129-d3fa-4bb8-b494-8af219ca4239.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
